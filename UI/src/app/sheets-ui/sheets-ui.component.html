@@ -1,0 +1,32 @@
+<mat-form-field class="example-full-width" style="width: 700px">
+    <mat-label>Please Enter Sheet ID</mat-label>
+    <input matInput [(ngModel)]="sheetId">
+</mat-form-field>
+
+<button mat-raised-button (click)="getData()" style="margin-left: 20px;">Get Data</button>
+
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Car Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Car Price </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    </ng-container>
+
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<br>
+<mat-list style="margin-top: 50px;">
+    <mat-list-item>Sum: {{sumPrice}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Average Price: {{avgPrice}}</mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
